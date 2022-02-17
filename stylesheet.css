@@ -1,0 +1,71 @@
+@import 'font/stylesheet.css';
+
+body {
+    font-family: 'Modern DOS 8x16', monospace;
+    font-weight: 100;
+    color: #3e3e3e;
+    background-color: #9cfbbc;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+a {
+    color: red;
+}
+
+h1 { 
+    text-align: center;
+}
+.footer p {
+    margin: .25em;
+    text-align: center;
+    opacity: 0.8;
+}
+
+.header {
+    padding-bottom: 2em;
+}
+
+.footer {
+    padding-top: 2em;
+}
+
+.s1 .ok, .s2, .s3, .s4, .s3 .loaded { display: none }
+
+button {
+    border: 1px solid #3e3e3e;
+    background-color: #069235;
+    padding: .5em;
+    color: white;
+    font-family: 'Modern DOS 8x16', monospace;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #046223;
+}
+
+.s1 .indicator {
+    font-style: italic;
+}
+
+.step {
+    margin: 1em 0 1em 0;
+}
+
+.cats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cat {
+    padding: 1em;
+    margin: 1em;
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.selected {
+    box-shadow: inset 0px 0px 0px 5px rgb(0, 255, 0, .5);
+}
