@@ -55,8 +55,8 @@ const updateAccounts = (account) => {
         accountSet = account;
 
     if (!account) {
-        hide($('.s1 .nok', step1));
-        show($('.s1 .ok', step1));
+        hide($('.s1 .nok'));
+        show($('.s1 .ok'));
         return;
     }
 
