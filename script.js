@@ -29,7 +29,7 @@ $('.s1 button').onclick = () => {
 
 $('.s2 button').onclick = async () => {
     const signer = new ethers.providers.Web3Provider(window.ethereum).getSigner();
-    const contract = new ethers.Contract('0x495f947276749Ce646f68AC8c248420045cb7b5e', [
+    const contract = new ethers.Contract(OPENSEA_STOREFRONT, [
         'function setApprovalForAll(address to, bool approved) public',
     ], signer);
 
