@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Wrapped PixelCats</title>
+        <link rel="stylesheet" href="stylesheet.css">
+    </head>
+    <body>
+        <div class="header">
+            <h1>Wrapped PixelCats</h1>
+            free your pixelcats from the shackles of OpenSea Shared Storefront <br />
+            and turn them into truly independent ERC-721 tokens
+        </div>
+        <div class="s1 step">
+            <div class="nok">
+                step 1. <button>connect your wallet</button>
+            </div>
+            <div class="ok">
+                currently connected account: <span class="indicator"></span><br />
+                wrong account? switch it in your wallet
+            </div>
+        </div>
+        <div class="s2 step">
+            <div class="nok">
+                step 2. <button>allow wrapper contract to transfer your storefront NFTs</button>
+            </div>
+        </div>
+        <div class="s3 step">
+            <div class="loading">
+                loading your pixelcats, hang tight ...
+                <p class="progress"></p>
+            </div>
+            <div class="loaded">
+                <div>
+                    you can <button class="wall">WRAP ALL</button> in one tx, or select the ones you want to wrap and then click
+                    <button class="wsome">WRAP 0</button>
+                </div>
+                <div class="cats"></div>
+            </div>
+        </div>
+        <div class="s4">
+            all done! you can click <a href="" class="tx" target="_blank" rel="noreferrer noopener">here</a> to view the wrap transaction on etherscan
+        </div>
+        <div class="footer">
+            <p>
+                this website and contract is released under CC0 <br />
+                the font used on this website, <a href="https://www.dafont.com/modern-dos.font">Modern DOS</a>, is also released under CC0.
+            </p>
+            <p>
+                sources: website - <a href="https://github.com/yoyyyyo/w24px-frontend">github</a>; 
+                contract - 
+                <a href="https://etherscan.io/address/0x68d38de8dea4c1130b1e883b6ab18bd8585fa23f">etherscan</a> |
+                <a href="https://github.com/yoyyyyo/wrapped24px">github</a>
+            </p>
+            <p>
+                appreciate this project? feel free to send me a tip at <a href="https://etherscan.io/address/0xe87e0005ff220862a79d5de41534deebbe68a099">yoyyyyo.eth</a>
+            </p>
+            <p>
+                feedback/complaints?
+                <a href="https://twitter.com/_yoyyyyo">@_yoyyyyo</a> on twitter
+                or <i>yoyyyyo#2722</i> on discord
+            </p>
+
+            <script
+                src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.5.4/ethers.umd.min.js"
+                integrity="sha512-xmbPx0riylir51GhTZCFd20yS7NYZNpfDTbEWBjDRzs+UaGb2RyjtASTVtF2ydQWp3xkso9j4sJj39PdSH8/EA=="
+                crossorigin="anonymous"
+                referrerpolicy="no-referrer"
+            ></script>
+            <script src="script.js"></script>
+        </div>
+    </body>
+</html>
