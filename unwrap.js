@@ -59,7 +59,7 @@ const getWrappedCatsOwnedBy = async (address, continuation = null, counter = 0) 
     const req = await fetch(url);
 
     if (req.status !== 200)
-        return await getCatsOwnedBy(address, continuation);
+        return await getWrappedCatsOwnedBy(address, continuation);
     
     const response = await req.json();
     const results = response.items.map(asset => {
@@ -73,7 +73,7 @@ const getWrappedCatsOwnedBy = async (address, continuation = null, counter = 0) 
 
     $('.s3 .loading .progress').textContent = `${counter} pixelcats loaded thus far`;
     if (response.continuation) {
-        const next = await getCatsOwnedBy(address, continuation, counter);
+        const next = await getWrappedCatsOwnedBy(address, continuation, counter);
         results.push(...next);
     }
 
