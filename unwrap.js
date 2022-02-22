@@ -1,4 +1,4 @@
-const WRAPPER_ADDRESS    = '0x68d38de8dea4c1130b1e883b6ab18bd8585fa23f';
+const WRAPPER_ADDRESS = '0x68d38de8dea4c1130b1e883b6ab18bd8585fa23f';
 
 const hide = elem => elem.style.display = 'none';
 const show = elem => elem.style.display = 'block';
@@ -17,6 +17,7 @@ if (window.ethereum) {
             return updateAccounts(accounts[0]);
     });
 }
+
 $('.s1 button').onclick = () => {
     if (window.ethereum)
         return window.ethereum.request({ method: 'eth_requestAccounts', params: [] })
