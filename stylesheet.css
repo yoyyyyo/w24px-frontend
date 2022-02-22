@@ -69,3 +69,8 @@ button:hover {
 .selected {
     box-shadow: inset 0px 0px 0px 5px rgb(0, 255, 0, .5);
 }
+
+img {
+    width: 128px;
+    height: 128px;
+}
