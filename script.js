@@ -63,7 +63,7 @@ const updateAccounts = (account) => {
     show($('.s1 .ok'));
     show($('.s2'));
 
-    hide($('.s1'));
+    hide($('.s1 .nok'));
     hide($('.s3'));
     hide($('.s4'));
 
