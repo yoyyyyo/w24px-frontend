@@ -9,10 +9,30 @@
             <h1>Wrapped PixelCats</h1>
             if you wish to unwrap your pixelcats, you can do so here
         </div>
-        <div>
-            coming soon! if you <i>really</i> need to unwrap your cats, use the etherscan link below <br />
-            and call unwrap() with an array of the ids you wish to unwrap <br />
-            (for example, unwrapping ids 1 through 3 would be [1,2,3])
+        <div class="s1 step">
+            <div class="nok">
+                step 1. <button>connect your wallet</button>
+            </div>
+            <div class="ok">
+                currently connected account: <span class="indicator"></span><br />
+                wrong account? switch it in your wallet
+            </div>
+        </div>
+        <div class="s3 step">
+            <div class="loading">
+                loading your wrapped pixelcats, hang tight ...
+                <p class="progress"></p>
+            </div>
+            <div class="loaded">
+                <div>
+                    you can <button class="wall">UNWRAP ALL</button> in one tx, or select the ones you want to wrap and then click
+                    <button class="wsome">UNWRAP 0</button>
+                </div>
+                <div class="cats"></div>
+            </div>
+        </div>
+        <div class="s4">
+            all done! you can click <a href="" class="tx" target="_blank" rel="noreferrer noopener">here</a> to view the wrap transaction on etherscan
         </div>
         <div class="footer">
             <p>
@@ -33,6 +53,14 @@
                 <a href="https://twitter.com/_yoyyyyo">@_yoyyyyo</a> on twitter
                 or <i>yoyyyyo#2722</i> on discord
             </p>
+
+            <script
+                src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.5.4/ethers.umd.min.js"
+                integrity="sha512-xmbPx0riylir51GhTZCFd20yS7NYZNpfDTbEWBjDRzs+UaGb2RyjtASTVtF2ydQWp3xkso9j4sJj39PdSH8/EA=="
+                crossorigin="anonymous"
+                referrerpolicy="no-referrer"
+            ></script>
+            <script src="unwrap.js"></script>
         </div>
     </body>
 </html>
