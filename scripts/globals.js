@@ -7,7 +7,7 @@ const show = elem => $(elem).style.display = 'block';
 
 const CONSTANTS = {
     apes: {
-        WRAPPER_ADDRESS: null,
+        WRAPPER_ADDRESS: '0xff26ef6ac14dfc92b59eeb39ad085353049918f0',
         NAME: 'PixelApes',
         SLUG: 'weape24',
         CSS_OVERRIDE: '/styles/apes.css'
