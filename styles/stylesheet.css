@@ -14,9 +14,10 @@ a {
     color: red;
 }
 
-h1 { 
+h1 {
     text-align: center;
 }
+
 .footer p {
     margin: .25em;
     text-align: center;
@@ -31,7 +32,13 @@ h1 {
     padding-top: 2em;
 }
 
-.s1 .ok, .s2, .s3, .s4, .s3 .loaded { display: none }
+.s1 .ok,
+.s2,
+.s3,
+.s4,
+.s3 .loaded {
+    display: none
+}
 
 button {
     border: 1px solid #3e3e3e;
@@ -54,13 +61,13 @@ button:hover {
     margin: 1em 0 1em 0;
 }
 
-.cats {
+.tokens {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.cat {
+.token {
     padding: 1em;
     margin: 1em;
     background: rgba(0, 0, 0, 0.15);
@@ -73,4 +80,9 @@ button:hover {
 img {
     width: 128px;
     height: 128px;
+}
+
+h1 > a {
+    text-decoration: none;
+    color: #3e3e3e;
 }

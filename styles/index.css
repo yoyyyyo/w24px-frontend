@@ -1,0 +1,78 @@
+@import 'font/stylesheet.css';
+
+body {
+    font-family: 'Modern DOS 8x16', monospace;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #eee;
+}
+
+div {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 10px;
+    box-shadow: inset 0px 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+div > span {
+    padding-left: 1em;
+    font-size: 2.5em;
+}
+
+h1 {
+    text-align: center;
+    font-size: 5em;
+    color: rgba(0, 0, 0, 1);
+    font-weight: normal;
+}
+
+.cat {
+    background-color: #9cfbbc;
+}
+
+.ape {
+    background-color: #12dec8;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+img {
+    image-rendering: pixelated;
+}
+
+button {
+    border: 1px solid #3e3e3e;
+    background-color: #069235;
+    padding: .5em;
+    color: white;
+    font-family: 'Modern DOS 8x16', monospace;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.ape button {
+    background-color: #0c998b;
+}
+
+button:hover {
+    background-color: #046223;
+}
+
+.ape button:hover {
+    background-color: #08665d;
+}
+
+
+@media only screen and (max-width: 768px) {
+    div {
+        flex-direction: column;
+        padding: 1em;
+    }
+    div > * {
+        margin: .5em;
+    }
+}

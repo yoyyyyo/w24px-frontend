@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Wrapped 24px | Unwrap</title>
+        <title>Wrapped 24px | Wrap</title>
         <link rel="stylesheet" href="styles/stylesheet.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <div class="header">
             <h1><a href="/">Wrapped 24px</a></h1>
-            <p>If you wish to unwrap your <span class="name_replacement">wrapped 24px tokens</span>, you can do so here.</p>
+            <p>free your <span class="name_replacement">24px tokens</span> from the shackles of OpenSea Shared Storefront</p>
+            <p>and turn them into truly independent ERC-721 tokens</p>
         </div>
         <div class="s1 step">
             <div class="nok">
@@ -19,15 +20,20 @@
                 wrong account? switch it in your wallet
             </div>
         </div>
+        <div class="s2 step">
+            <div class="nok">
+                step 2. <button>allow wrapper contract to transfer your storefront NFTs</button>
+            </div>
+        </div>
         <div class="s3 step">
             <div class="loading">
-                loading your <span class="name_replacement">wrapped 24px tokens</span>, hang tight ...
+                loading your <span class="name_replacement">24px tokens</span>, hang tight ...
                 <p class="progress"></p>
             </div>
             <div class="loaded">
                 <div>
-                    you can <button class="wall">UNWRAP ALL</button> in one tx, or select the ones you want to wrap and then click
-                    <button class="wsome">UNWRAP 0</button>
+                    you can <button class="wall">WRAP ALL</button> in one tx, or select the ones you want to wrap and then click
+                    <button class="wsome">WRAP 0</button>
                 </div>
                 <div class="tokens"></div>
             </div>
@@ -54,14 +60,15 @@
                 <a href="https://twitter.com/_yoyyyyo">@_yoyyyyo</a> on twitter
                 or <i>yoyyyyo#2722</i> on discord
             </p>
+
+            <script
+                src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.5.4/ethers.umd.min.js"
+                integrity="sha512-xmbPx0riylir51GhTZCFd20yS7NYZNpfDTbEWBjDRzs+UaGb2RyjtASTVtF2ydQWp3xkso9j4sJj39PdSH8/EA=="
+                crossorigin="anonymous"
+                referrerpolicy="no-referrer"
+            ></script>
+            <script src="scripts/globals.js"></script>
+            <script src="scripts/wrap.js"></script>
         </div>
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.5.4/ethers.umd.min.js"
-            integrity="sha512-xmbPx0riylir51GhTZCFd20yS7NYZNpfDTbEWBjDRzs+UaGb2RyjtASTVtF2ydQWp3xkso9j4sJj39PdSH8/EA=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"
-        ></script>
-        <script src="scripts/globals.js"></script>
-        <script src="scripts/unwrap.js"></script>
     </body>
 </html>
