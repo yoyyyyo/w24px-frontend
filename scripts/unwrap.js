@@ -9,7 +9,8 @@ const initialize = (type) => {
     } = CONSTANTS[type];
 
     document.querySelectorAll('.name_replacement').forEach(elem => elem.innerText = NAME);
-    document.querySelector('h1 a').innerText = `Wrapped ${NAME}`;
+    $('h1 a').innerText = `Wrapped ${NAME}`;
+    $('.contract_link').href = `https://etherscan.io/address/${WRAPPER_ADDRESS}/#code`;
     document.title = document.title.replace('24px', NAME);
 
     if (CSS_OVERRIDE) {
