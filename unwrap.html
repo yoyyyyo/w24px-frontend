@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Wrapped PixelCats</title>
-        <link rel="stylesheet" href="stylesheet.css">
+        <title>Wrapped 24px | Unwrap</title>
+        <link rel="stylesheet" href="styles/stylesheet.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <div class="header">
-            <h1>Wrapped PixelCats</h1>
-            if you wish to unwrap your pixelcats, you can do so here
+            <h1><a href="/">Wrapped 24px</a></h1>
+            <p>If you wish to unwrap your <span class="name_replacement">wrapped 24px tokens</span>, you can do so here.</p>
         </div>
         <div class="s1 step">
             <div class="nok">
@@ -20,7 +21,7 @@
         </div>
         <div class="s3 step">
             <div class="loading">
-                loading your wrapped pixelcats, hang tight ...
+                loading your <span class="name_replacement">wrapped 24px tokens</span>, hang tight ...
                 <p class="progress"></p>
             </div>
             <div class="loaded">
@@ -28,7 +29,7 @@
                     you can <button class="wall">UNWRAP ALL</button> in one tx, or select the ones you want to wrap and then click
                     <button class="wsome">UNWRAP 0</button>
                 </div>
-                <div class="cats"></div>
+                <div class="tokens"></div>
             </div>
         </div>
         <div class="s4">
@@ -53,14 +54,14 @@
                 <a href="https://twitter.com/_yoyyyyo">@_yoyyyyo</a> on twitter
                 or <i>yoyyyyo#2722</i> on discord
             </p>
-
-            <script
-                src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.5.4/ethers.umd.min.js"
-                integrity="sha512-xmbPx0riylir51GhTZCFd20yS7NYZNpfDTbEWBjDRzs+UaGb2RyjtASTVtF2ydQWp3xkso9j4sJj39PdSH8/EA=="
-                crossorigin="anonymous"
-                referrerpolicy="no-referrer"
-            ></script>
-            <script src="unwrap.js"></script>
         </div>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.5.4/ethers.umd.min.js"
+            integrity="sha512-xmbPx0riylir51GhTZCFd20yS7NYZNpfDTbEWBjDRzs+UaGb2RyjtASTVtF2ydQWp3xkso9j4sJj39PdSH8/EA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+        <script src="scripts/globals.js"></script>
+        <script src="scripts/unwrap.js"></script>
     </body>
 </html>
