@@ -1,8 +1,0 @@
-@font-face {
-    font-family: 'Modern DOS 8x16';
-    src: url('ModernDOS8x16.woff2') format('woff2'),
-        url('ModernDOS8x16.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
