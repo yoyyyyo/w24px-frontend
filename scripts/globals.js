@@ -10,7 +10,7 @@ const CONSTANTS = {
         WRAPPER_ADDRESS: '0xff26ef6ac14dfc92b59eeb39ad085353049918f0',
         NAME: 'PixelApes',
         SLUG: 'weape24',
-        CSS_OVERRIDE: '/styles/apes.css'
+        CSS_OVERRIDE: 'styles/apes.css'
     },
     cats: {
         WRAPPER_ADDRESS: '0x68d38de8dea4c1130b1e883b6ab18bd8585fa23f',
