@@ -16,9 +16,11 @@ jobs:
         node-version: '16'
     - name: Download front page icons
       run: |
-          mkdir ./img && cd ./img && \
-          wget https://cloudflare-ipfs.com/ipfs/QmS87PevAQgQBBfEf5HMjirVYZuquFi61ze1ZFPw9zybZ3/pixel{ape,cat}.png && \
+          mkdir ./img && \
+          wget -P img/ https://cloudflare-ipfs.com/ipfs/$CID/pixel{ape,cat}.png && \
           sed -riE 's/src=".+\/(.+\.png)"/src="img\/\1"/g' index.html
+      env:
+        CID: QmS87PevAQgQBBfEf5HMjirVYZuquFi61ze1ZFPw9zybZ3
     - name: Write commit hash to index file
       run: sed -i s/COMMIT_HASH/$(git rev-parse HEAD)/g index.html
     - name: Build .car file
