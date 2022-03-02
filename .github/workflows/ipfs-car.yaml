@@ -1,0 +1,33 @@
+name: Generate IPFS .car file
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: '16'
+    - name: Download front page icons
+      run: |
+          mkdir ./img && \
+          wget -P img/ https://cloudflare-ipfs.com/ipfs/$CID/pixel{ape,cat}.png && \
+          sed -riE 's/src=".+\/(.+\.png)"/src="img\/\1"/g' index.html
+      env:
+        CID: QmS87PevAQgQBBfEf5HMjirVYZuquFi61ze1ZFPw9zybZ3
+    - name: Write commit hash to index file
+      run: sed -i s/COMMIT_HASH/$(git rev-parse HEAD)/g index.html
+    - name: Build .car file
+      run: |
+        npm install -g ipfs-car && \
+        ipfs-car --wrapWithDirectory false --pack . --output output.car
+    - uses: actions/upload-artifact@v2
+      with:
+        path: output.car

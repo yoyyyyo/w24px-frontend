@@ -76,3 +76,9 @@ button:hover {
         margin: .5em;
     }
 }
+
+p {
+    text-align: center;
+    padding-top: 2em;
+    opacity: 0.5;
+}
