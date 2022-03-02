@@ -12,6 +12,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
+      with:
+        node-version: 'lts/*'
     - name: Write commit hash to index file
       run: sed -i s/COMMIT_HASH/$(git rev-parse HEAD)/ index.html
     - name: Build .car file
