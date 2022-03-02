@@ -2,7 +2,8 @@ name: Generate IPFS .car file
 
 on:
   push:
-    branches: '*'
+    branches:
+      - main
 
 jobs:
   build:
