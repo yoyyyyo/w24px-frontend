@@ -26,7 +26,7 @@ jobs:
       run: sed -i s/COMMIT_HASH/$(git rev-parse HEAD)/g index.html
     - name: Build .car file
       run: |
-        npm install -g ipfs-car && \
+        npm install -g ipfs-car@0.6.2 && \
         ipfs-car --wrapWithDirectory false --pack . --output output.car
     - uses: actions/upload-artifact@v2
       with:
