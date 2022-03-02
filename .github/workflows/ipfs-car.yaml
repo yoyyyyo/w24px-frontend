@@ -17,7 +17,7 @@ jobs:
     - name: Download front page icons
       run: |
           mkdir ./img && cd ./img && \
-          wget https://ipfs.io/ipfs/QmS87PevAQgQBBfEf5HMjirVYZuquFi61ze1ZFPw9zybZ3/pixel{ape,cat}.png && \
+          wget https://cloudflare-ipfs.com/ipfs/QmS87PevAQgQBBfEf5HMjirVYZuquFi61ze1ZFPw9zybZ3/pixel{ape,cat}.png && \
           sed -iE 's/src=".+\/(.+\.png)"/src="img\/\1"/g' index.html
     - name: Write commit hash to index file
       run: sed -i s/COMMIT_HASH/$(git rev-parse HEAD)/g index.html
