@@ -27,7 +27,7 @@ jobs:
     - name: Build .car file
       run: |
         npm install -g ipfs-car@0.6.2 && \
-        ipfs-car --wrapWithDirectory false --pack . --output output.car
+        ipfs-car --wrapWithDirectory false --pack . --output /tmp/output.car
     - uses: actions/upload-artifact@v2
       with:
-        path: output.car
+        path: /tmp/output.car
