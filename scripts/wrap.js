@@ -152,10 +152,6 @@ const initialize = (type) => {
                         'Are you sure you signed in with the right wallet?');
     
         const signer = new ethers.providers.Web3Provider(window.ethereum).getSigner();
-        const contract = new ethers.Contract(WRAPPER_ADDRESS, [
-            'function wrap(uint[] ids) external',
-        ], signer);
-    
         const chain = await signer.getChainId();
         if (chain !== 1)
             alert(`Warning! Wrong chain ID: ${chain}.` +
@@ -164,16 +160,15 @@ const initialize = (type) => {
     
         hide('.s3 .loading');
         show('.s3 .loaded');
-        $('.wall').onclick = () =>
-            contract.wrap(tokens.map(({ id }) => id))
-            .then(handleFinalization)
-            .catch(handleError);
+        $('.wall').onclick = () => wrap(tokens.map(({ id }) => id))
+                                    .then(handleFinalization)
+                                    .catch(handleError);
     
         $('.wsome').onclick = () => {
             if (selected.size === 0)
                 return alert(`You haven't selected any ${NAME} to wrap!`);
     
-            contract.wrap([...selected])
+            wrap([...selected])
             .then(handleFinalization)
             .catch(handleError);
         }
@@ -203,6 +198,19 @@ const initialize = (type) => {
             $('.s3 .tokens').appendChild(div);
         });
     }
+
+    const wrap = tokenIds => {
+        const signer = new ethers.providers.Web3Provider(window.ethereum).getSigner();
+        const contract = new ethers.Contract(WRAPPER_ADDRESS, [
+            'function wrapSingle(uint ids) external',
+            'function wrapMultiple(uint[] ids) external',
+        ], signer);
+
+        if (tokenIds.length === 1)
+            return contract.wrapSingle(tokenIds[0]);
+
+        return contract.wrapMultiple(tokenIds);
+    };
     
     const handleFinalization = async (tx) => {
         hide('.s3');

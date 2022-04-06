@@ -64,25 +64,24 @@ const initialize = (type) => {
         loadWrappedTokens(account);
     }
 
-    const getWrappedTokensOwnedBy = async (address, continuation = null, counter = 0) => {
-        const url = new URL('https://ethereum-api.rarible.org/v0.1/nft/items/byCollection');
+    const getWrappedTokensOwnedBy = async (address, pageKey = null, counter = 0) => {
+        const url = new URL(`https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_API_KEY}/getNFTs`);
         url.searchParams.set('owner', address);
-        url.searchParams.set('size', 50);
-        url.searchParams.set('collection', WRAPPER_ADDRESS);
+        url.searchParams.set('contractAddresses[]', WRAPPER_ADDRESS);
 
-        if (continuation)
-            url.searchParams.set('continuation', continuation);
+        if (pageKey)
+            url.searchParams.set('pageKey', pageKey);
         
         const req = await fetch(url);
 
         if (req.status !== 200)
-            return await getWrappedTokensOwnedBy(address, continuation);
+            return await getWrappedTokensOwnedBy(address, pageKey);
         
         const response = await req.json();
-        const results = response.items.map(asset => {
+        const results = response.ownedNfts.map(asset => {
             return {
-                id: Number(asset.tokenId),
-                thumbnail: asset.meta.image.url.ORIGINAL
+                id: parseInt(asset.id.tokenId, 16),
+                thumbnail: asset.media?.[0]?.gateway
             }
         });
 
@@ -105,10 +104,10 @@ const initialize = (type) => {
             return alert(`It doesn't seem like you own any ${NAME}! ` +
             'Are you sure you signed in with the right wallet?');
 
-        const signer = new ethers.providers.Web3Provider(window.ethereum).getSigner();
-        const contract = new ethers.Contract(WRAPPER_ADDRESS, [
-            'function unwrap(uint[] ids) external',
-        ], signer);
+            const signer = new ethers.providers.Web3Provider(window.ethereum).getSigner();
+            const contract = new ethers.Contract(WRAPPER_ADDRESS, [
+                'function unwrap(uint[] ids) external',
+            ], signer);
 
         const chain = await signer.getChainId();
         if (chain !== 1)
@@ -119,7 +118,7 @@ const initialize = (type) => {
         hide('.s3 .loading');
         show('.s3 .loaded');
         $('.wall').onclick = () =>
-            contract.unwrap(tokens.map(({ id }) => id))
+            unwrap(tokens.map(({ id }) => id))
             .then(handleFinalization)
             .catch(handleError);
 
@@ -127,7 +126,7 @@ const initialize = (type) => {
             if (selected.size === 0)
                 return alert(`You haven't selected any ${NAME} to unwrap!`);
 
-            contract.unwrap([...selected])
+            unwrap([...selected])
             .then(handleFinalization)
             .catch(handleError);
         }
@@ -157,6 +156,19 @@ const initialize = (type) => {
             $('.s3 .tokens').appendChild(div);
         });
     }
+
+    const unwrap = tokenIds => {
+        const signer = new ethers.providers.Web3Provider(window.ethereum).getSigner();
+        const contract = new ethers.Contract(WRAPPER_ADDRESS, [
+            'function unwrapSingle(uint ids) external',
+            'function unwrapMultiple(uint[] ids) external',
+        ], signer);
+
+        if (tokenIds.length === 1)
+            return contract.unwrapSingle(tokenIds[0]);
+
+        return contract.unwrapMultiple(tokenIds);
+    };
 
     const handleFinalization = async (tx) => {
         hide('.s3');
