@@ -104,15 +104,15 @@ const initialize = (type) => {
         })();
     }
     
-    const getTokensOwnedBy = async (address, offset = null, counter = 0) => {
+    const getTokensOwnedBy = async (address, cursor = null, counter = 0) => {
         const url = new URL('https://api.opensea.io/api/v1/assets');
         url.searchParams.set('owner', address);
         url.searchParams.set('order_direction', 'desc');
         url.searchParams.set('limit', 50);
         url.searchParams.set('collection', SLUG);
     
-        if (offset)
-            url.searchParams.set('offset', offset);
+        if (cursor)
+            url.searchParams.set('cursor', cursor);
         
         const req = await fetch(url, {
             headers: {
@@ -121,9 +121,9 @@ const initialize = (type) => {
         });
     
         if (req.status !== 200)
-            return await getTokensOwnedBy(address, offset);
+            return await getTokensOwnedBy(address, cursor, counter);
         
-        const { assets } = await req.json();
+        const { assets, next } = await req.json();
         const results = assets.map(asset => {
             return {
                 id: Number(asset.name.split(' ')[1]),
@@ -135,9 +135,9 @@ const initialize = (type) => {
     
         $('.s3 .loading .progress').textContent = `${counter} ${NAME} loaded thus far`;
     
-        if (assets.length >= 50) {
-            const next = await getTokensOwnedBy(address, (offset || 0) + 50, counter);
-            results.push(...next);
+        if (next !== null) {
+            const nextReq = await getTokensOwnedBy(address, next, counter);
+            results.push(...nextReq);
         }
     
         return results;
