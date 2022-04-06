@@ -95,7 +95,7 @@ const initialize = (type) => {
     
         $('.s3 .loading .progress').textContent = `${counter} ${NAME} loaded thus far`;
     
-        if (next != null) {
+        if (next !== null) {
             const nextReq = await getTokensOwnedBy(address, next, counter);
             results.push(...nextReq);
         }
