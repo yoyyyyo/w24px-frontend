@@ -47,6 +47,8 @@ const initialize = (type) => {
     const updateAccounts = (account) => {
         if (accountSet !== account && accountSet !== null)
             return window.location.reload();
+        else if (accountSet === account)
+            return;
         else
             accountSet = account;
 
@@ -64,35 +66,42 @@ const initialize = (type) => {
         loadWrappedTokens(account);
     }
 
-    const getWrappedTokensOwnedBy = async (address, pageKey = null, counter = 0) => {
-        const url = new URL(`https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_API_KEY}/getNFTs`);
+    const getWrappedTokensOwnedBy = async (address, cursor = null, counter = 0) => {
+        const url = new URL('https://api.opensea.io/api/v1/assets');
         url.searchParams.set('owner', address);
-        url.searchParams.set('contractAddresses[]', WRAPPER_ADDRESS);
-
-        if (pageKey)
-            url.searchParams.set('pageKey', pageKey);
+        url.searchParams.set('order_direction', 'desc');
+        url.searchParams.set('limit', 50);
+        url.searchParams.set('asset_contract_address', WRAPPER_ADDRESS);
+    
+        if (cursor)
+            url.searchParams.set('cursor', cursor);
         
-        const req = await fetch(url);
-
-        if (req.status !== 200)
-            return await getWrappedTokensOwnedBy(address, pageKey);
-        
-        const response = await req.json();
-        const results = response.ownedNfts.map(asset => {
-            return {
-                id: parseInt(asset.id.tokenId, 16),
-                thumbnail: asset.media?.[0]?.gateway
+        const req = await fetch(url, {
+            headers: {
+                'X-Api-Key': OPENSEA_API_KEY
             }
         });
-
+    
+        if (req.status !== 200)
+            return await getTokensOwnedBy(address, cursor);
+        
+        const { assets, next } = await req.json();
+        const results = assets.map(asset => {
+            return {
+                id: Number(asset.name.split(' ')[1]),
+                thumbnail: asset.image_thumbnail_url
+            }
+        });
+    
         counter += results.length;
-
+    
         $('.s3 .loading .progress').textContent = `${counter} ${NAME} loaded thus far`;
-        if (response.continuation) {
-            const next = await getWrappedTokensOwnedBy(address, continuation, counter);
-            results.push(...next);
+    
+        if (next !== null) {
+            const nextReq = await getTokensOwnedBy(address, next, counter);
+            results.push(...nextReq);
         }
-
+    
         return results;
     }
 
