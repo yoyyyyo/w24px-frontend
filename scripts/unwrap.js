@@ -47,6 +47,8 @@ const initialize = (type) => {
     const updateAccounts = (account) => {
         if (accountSet !== account && accountSet !== null)
             return window.location.reload();
+        else if (accountSet === account)
+            return;
         else
             accountSet = account;
 
