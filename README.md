@@ -7,6 +7,6 @@ A frontend for the Wrapped 24px contracts deployed on Ethereum mainnet.
 - <https://wrapped24px.eth.link>
 - <https://wrapped24px.eth.limo>
 - <https://cloudflare-ipfs.com/ipns/wrapped24px.eth>
-- <https://bafybeig5dosfvkuy42sca2ublmqrbuhgchr243juqh2nwxe5amfbn4qrf4.ipfs.infura-ipfs.io>
-- <https://bafybeig5dosfvkuy42sca2ublmqrbuhgchr243juqh2nwxe5amfbn4qrf4.ipfs.dweb.link>
-- <https://bafybeig5dosfvkuy42sca2ublmqrbuhgchr243juqh2nwxe5amfbn4qrf4.ipfs.cf-ipfs.com>
+- <https://bafybeihui2ek47ew2xtmu5yudm4b3mxj2mlfb6ci2l4rljio2tdl5p5giq.ipfs.infura-ipfs.io>
+- <https://bafybeihui2ek47ew2xtmu5yudm4b3mxj2mlfb6ci2l4rljio2tdl5p5giq.ipfs.dweb.link>
+- <https://bafybeihui2ek47ew2xtmu5yudm4b3mxj2mlfb6ci2l4rljio2tdl5p5giq.ipfs.cf-ipfs.com>
