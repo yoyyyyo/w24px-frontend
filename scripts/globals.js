@@ -1,5 +1,4 @@
 const OPENSEA_STOREFRONT = '0x495f947276749Ce646f68AC8c248420045cb7b5e';
-const OPENSEA_API_KEY = [...'0a843e8ca02d4a3afc04d21ac33ab498'].reverse().join('');
 
 const $ = (selector, root = document) => root.querySelector(selector);
 const hide = elem => $(elem).style.display = 'none';

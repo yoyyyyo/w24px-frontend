@@ -76,11 +76,7 @@ const initialize = (type) => {
         if (cursor)
             url.searchParams.set('cursor', cursor);
         
-        const req = await fetch(url, {
-            headers: {
-                'X-Api-Key': OPENSEA_API_KEY
-            }
-        });
+        const req = await fetch(url);
     
         if (req.status !== 200)
             return await getTokensOwnedBy(address, cursor);
